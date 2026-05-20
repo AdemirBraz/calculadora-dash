@@ -6,8 +6,8 @@ def estrutura():
                 dbc.Card(
                     dbc.CardBody([
                         dbc.Badge(children='CALCULATOR',color='white',text_color='dark'),
-                        dbc.Input(type='text', class_name='center'),
                         dbc.Label(''),
+                        dbc.Input(id='text', class_name='center'),
                         create_buttons()
                     ], class_name='bg-light d-flex flex-column'),  
                     class_name='bg-dark p-2',
