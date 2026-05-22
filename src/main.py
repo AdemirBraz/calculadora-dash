@@ -22,10 +22,22 @@ app.layout = html.Div([
     prevent_initial_call=True
 )
 
-def update_display(btn_clicks, operador_clicks, clear_clicks,valor_input):    
-   trigger=ctx.triggered_id
-   print(trigger['index'])
-   valor_input+=1
-   return trigger['index']
+def update_display(btn_clicks,operador_clicks,clear_clicks ,valor_input):    
+    trigger=ctx.triggered_id
+    valor=str(trigger['index'])
+    if valor_input is None:
+        valor_input = ''
+    else:
+        valor_input=str(valor_input)
+    if trigger == 'clear':
+        return ''
+    if valor == '=':
+        try:
+            resultado = eval(valor_input)
+            return str(resultado)
+        except:
+            print('ERRO')
+    valor_input += valor
+    return valor_input
 if __name__ == "__main__":
     app.run(debug=True)
