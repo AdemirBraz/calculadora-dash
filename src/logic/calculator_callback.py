@@ -1,7 +1,4 @@
-from dash import Dash, html, dcc, callback, Output, Input, State, ALL,ctx
-import dash_bootstrap_components as dbc
-from layout.case import estrutura
-from layout.buttons import create_buttons
+from dash import  callback, Output, Input, State, ALL,ctx
 @callback(
     Output("text", "value"),
     Input({"type": "btn", "index": ALL}, "n_clicks"),
@@ -10,7 +7,6 @@ from layout.buttons import create_buttons
     State('text','value'),
     prevent_initial_call=True
 )
-
 def update_display(btn_clicks,operador_clicks,clear_clicks ,valor_input):    
     trigger=ctx.triggered_id
     if trigger=='clear':
@@ -25,7 +21,6 @@ def update_display(btn_clicks,operador_clicks,clear_clicks ,valor_input):
             resultado = eval(valor_input)
             return str(resultado)
         except:
-            print('ERRO')
-    
+            print('ERRO')   
     valor_input += valor
     return valor_input
