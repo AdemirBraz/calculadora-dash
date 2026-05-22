@@ -9,14 +9,14 @@ def create_buttons():
                 dbc.Button('7', id={"type": "btn", "index": 7}),
                 dbc.Button('8', id={"type": "btn", "index": 8}),
                 dbc.Button('9', id={"type": "btn", "index": 9}),
-                dbc.Button('/', id={"type": "operador", "index": '/'})
+                dbc.Button('÷', id={"type": "operador", "index": '/'})
             ], id='botoes-1', class_name='w-100 p-1')),
         dbc.Col(
             dbc.ButtonGroup([
                 dbc.Button('4', id={"type": "btn", "index": 4}),
                 dbc.Button('5', id={"type": "btn", "index": 5}),
                 dbc.Button('6', id={"type": "btn", "index": 6}),
-                dbc.Button('*', id={"type": "operador", "index": '*'})
+                dbc.Button('x', id={"type": "operador", "index": '*'})
             ], class_name='w-100 p-1')),
         dbc.Col(
             dbc.ButtonGroup([

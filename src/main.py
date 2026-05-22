@@ -2,7 +2,7 @@ from layout.buttons import create_buttons
 from dash import Dash, html, dcc, callback, Output, Input, State, ALL,ctx
 from layout.case import estrutura
 import dash_bootstrap_components as dbc
-
+import logic.calculator_callback
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 botoes = create_buttons
@@ -13,31 +13,5 @@ app.layout = html.Div([
     html.Div(id="btn",)
 ])
 
-@app.callback(
-    Output("text", "value"),
-    Input({"type": "btn", "index": ALL}, "n_clicks"),
-    Input({"type": "operador", "index": ALL}, "n_clicks"),
-    Input("clear", "n_clicks"),
-    State('text','value'),
-    prevent_initial_call=True
-)
-
-def update_display(btn_clicks,operador_clicks,clear_clicks ,valor_input):    
-    trigger=ctx.triggered_id
-    valor=str(trigger['index'])
-    if valor_input is None:
-        valor_input = ''
-    else:
-        valor_input=str(valor_input)
-    if trigger == 'clear':
-        return ''
-    if valor == '=':
-        try:
-            resultado = eval(valor_input)
-            return str(resultado)
-        except:
-            print('ERRO')
-    valor_input += valor
-    return valor_input
 if __name__ == "__main__":
     app.run(debug=True)
