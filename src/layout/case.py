@@ -8,7 +8,7 @@ def estrutura():
                         dbc.Badge(children='CALCULATOR',color='primary',text_color='dark',class_name='d-flex justify-content-left m-1 p-1'),
                         dbc.Row([
                             dbc.Col(
-                                dbc.Input(id="text", class_name='w-100 d-flex justify-content-left me-1',value='',placeholder='', readonly=True),
+                                dbc.Input(id="text", class_name='w-100 d-flex justify-content-left me-1',value='',placeholder='0', readonly=True),
                 width=8),
                             dbc.Col(
                                 dbc.Button('C', id="clear", color="danger",class_name='w-100'),
