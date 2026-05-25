@@ -5,11 +5,11 @@ def estrutura():
     return dbc.Container(
                 dbc.Card(
                     dbc.CardBody([
-                        dbc.Badge(children='CALCULATOR',color='white',text_color='dark'),
+                        dbc.Badge(children='CALCULATOR',color='primary',text_color='dark'),
                         dbc.Label(''),
-                        dbc.Input(id="text", class_name='d-flex justify-content-end',value=''),
+                        dbc.Input(id="text", class_name='d-flex justify-content-left',value='',placeholder='0', readonly=True),
                         create_buttons()
-                    ], class_name='bg-light d-flex flex-column'),  
+                    ], class_name='bg-primary d-flex flex-column'),  
                     class_name='bg-dark p-2',
                     style={'width': '300px'}
                 ),

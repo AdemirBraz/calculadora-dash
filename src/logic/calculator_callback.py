@@ -1,4 +1,5 @@
 from dash import  callback, Output, Input, State, ALL,ctx
+from validation import operation
 @callback(
     Output("text", "value"),
     Input({"type": "btn", "index": ALL}, "n_clicks"),
@@ -7,20 +8,7 @@ from dash import  callback, Output, Input, State, ALL,ctx
     State('text','value'),
     prevent_initial_call=True
 )
-def update_display(btn_clicks,operador_clicks,clear_clicks ,valor_input):    
-    trigger=ctx.triggered_id
-    if trigger=='clear':
-        return " "
-    valor=str(trigger['index'])
-    if valor_input is None:
-        valor_input = ''
-    else:
-        valor_input=str(valor_input)
-    if valor == '=':
-        try:
-            resultado = eval(valor_input)
-            return str(resultado)
-        except:
-            print('ERRO')   
-    valor_input += valor
-    return valor_input
+def update_display(btn_clicks,operador_clicks,clear_clicks ,valor_input):
+    return operation.bugs(operador_clicks,valor_input)
+    
+    
