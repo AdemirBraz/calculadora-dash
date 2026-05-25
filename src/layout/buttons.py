@@ -1,18 +1,19 @@
 import dash_bootstrap_components as dbc
 from dash import html
 
+# def create_buttons():
+#     numeros = []
+#     for num in range(0, 10):
+#         numeros.append(dbc.Button(num, id= {"type":"btn", "index":num}, color = "dark"))
+
 def create_buttons():
+    numeros = [dbc.Button(num, id= {"type":"btn", "index":num}, color = "dark") for num in range(0, 10)]
+    return dbc.ButtonGroup(numeros)
+
     return dbc.Col([
         dbc.Col(
             dbc.ButtonGroup([
-                
-                dbc.Button('C', id="clear", color="danger"),
-                
-                
-            ], id='botoes-1', class_name='w-100 p-1')),
-        dbc.Col(
-            dbc.ButtonGroup([
-                dbc.Button('7', id={"type": "btn", "index": 7},color='dark'),
+                dbc.Button(7, id={"type": "btn", "index": 7},color='dark'),
                 dbc.Button('8', id={"type": "btn", "index": 8},color='dark'),
                 dbc.Button('9', id={"type": "btn", "index": 9},color='dark'),
                 dbc.Button('x', id={"type": "operador", "index": '*'},color='dark'),
