@@ -25,8 +25,11 @@ def validar(valor_input):
         return 'erro'
     
 def bloquear(valor, valor_input):
+    valor_input = (valor_input or "").strip()
     if not valor_input:
-        return True
+        if valor in operador or valor == '.':
+            return True
+        return False
 
     if valor == '.':
         if valor_input[-1] in operador:
@@ -35,8 +38,7 @@ def bloquear(valor, valor_input):
             return True
 
     elif valor in operador:
-        if valor_input[-1] in operador:
-            return True
+        pass
 
     elif valor == '0':
         idx = last_op_index(valor_input.strip())
