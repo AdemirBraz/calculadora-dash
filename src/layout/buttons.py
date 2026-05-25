@@ -7,8 +7,8 @@ from dash import html
 #         numeros.append(dbc.Button(num, id= {"type":"btn", "index":num}, color = "dark"))
 
 def create_buttons():
-    numeros = [dbc.Button(num, id= {"type":"btn", "index":num}, color = "dark") for num in range(0, 10)]
-    return dbc.ButtonGroup(numeros)
+    # numeros = [dbc.Button(num, id= {"type":"btn", "index":num}, color = "dark") for num in range(0, 10)]
+    # return dbc.ButtonGroup(numeros)
 
     return dbc.Col([
         dbc.Col(
