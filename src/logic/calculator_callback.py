@@ -1,7 +1,6 @@
 from dash import callback, Output, Input, State, ALL, ctx, no_update
-from validation.operation import validar, bloquear
+from validation.operation import validar, bloquear, update_operador
 from logic.constant import operador
-from validation.operation import normalizar_numeros
 
 @callback(
     Output("text", "value"),
@@ -11,29 +10,23 @@ from validation.operation import normalizar_numeros
     State('text', 'value'),
     prevent_initial_call=True
 )
-def update_display(_, operador_clicks, __, valor_input):
+def update_display(_, __, ___, valor_input = ""):
     trigger = ctx.triggered_id
 
     if trigger == 'clear':
         return ""
 
     valor = str(trigger['index'])
-    valor_input = valor_input or ""
 
     if bloquear(valor, valor_input):
         return no_update
 
     if valor == '=':
-        try:
-            expressao_normalizada = normalizar_numeros(valor_input)
-            resultado = eval(expressao_normalizada)
-            if isinstance(resultado, float) and resultado.is_integer():
-                resultado = int(resultado)
-            return str(resultado)
-        except Exception:
-            return no_update
+        #aqui retorna o resultado formatado pela validação
+        return validar(valor_input)
 
-    if valor in operador and valor_input and valor_input[-1] in operador:
+    #deixei um comentario na definição dessa função
+    if update_operador(valor, valor_input): 
         return valor_input[:-1] + valor
 
     return valor_input + valor

@@ -1,4 +1,3 @@
-from dash import ctx
 import re
 from logic.constant import operador
 
@@ -17,13 +16,20 @@ def normalizar_numeros(expressao):
 def validar(valor_input):
     try:
         expressao_normalizada = normalizar_numeros(valor_input)
-        resultado = eval(expressao_normalizada)
+        resultado = eval(expressao_normalizada) # seria bom tirar esse resultado daqui, mas como ta no try deixa assim mesmo
+        if isinstance(resultado, float) and resultado.is_integer():
+            resultado = int(resultado)
         return str(resultado)
     except ZeroDivisionError:
         return 'erro nao pode dividir por zero'
     except Exception:
-        return 'erro'
+        return 'Ocorreu um erro, tente uma expressão mais simples' #mensagem de erro melhor
     
+def update_operador(valor, valor_input):
+    # essa versão é mais eficiente e mais simples, se o valor_input não existir ele ja cancela na hora
+    if valor_input and valor in operador and valor_input[-1] in operador:
+        return True
+
 def bloquear(valor, valor_input):
     valor_input = (valor_input or "").strip()
     if not valor_input:
@@ -36,9 +42,6 @@ def bloquear(valor, valor_input):
             return True
         if '.' in valor_input[last_op_index(valor_input) + 1:]:
             return True
-
-    elif valor in operador:
-        pass
 
     elif valor == '0':
         idx = last_op_index(valor_input.strip())

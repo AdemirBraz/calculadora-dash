@@ -1,3 +1,16 @@
-src/layout/__pycache__/buttons.cpython-312.pyc
-src/layout/__pycache__/case.cpython-312.pyc
-src/layout/__pycache__/buttons.cpython-312.pyc
+# Arquivos de bytecode (compilados)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ambientes virtuais (caso use)
+.venv/
+venv/
+env/
+
+# Configurações locais do VS Code
+.vscode/
+
+# Histórico de comandos e estados do terminal do VS Code
+.history/
