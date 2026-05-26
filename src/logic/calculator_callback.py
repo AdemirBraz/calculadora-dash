@@ -1,6 +1,5 @@
 from dash import callback, Output, Input, State, ALL, ctx, no_update
 from validation.operation import validar, bloquear, update_operador
-from logic.constant import operador
 
 @callback(
     Output("text", "value"),
