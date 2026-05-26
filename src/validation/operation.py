@@ -16,7 +16,7 @@ def normalizar_numeros(expressao):
 def validar(valor_input):
     try:
         expressao_normalizada = normalizar_numeros(valor_input)
-        resultado = eval(expressao_normalizada) # seria bom tirar esse resultado daqui, mas como ta no try deixa assim mesmo
+        resultado = eval(expressao_normalizada) # seria bom tirar esse resultado daqui, mas como ta usando eval deixa assim mesmo
         if isinstance(resultado, float) and resultado.is_integer():
             resultado = int(resultado)
         return str(resultado)
